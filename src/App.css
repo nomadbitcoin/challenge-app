@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    background-color: #FDFDFD;
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  header {
+    background-color: #4C98E2;
+    color: #FDFDFD;
+    padding: 1em;
   }
-  to {
-    transform: rotate(360deg);
+  
+  header h1 {
+    margin: 0;
+    text-align: center
   }
-}
+  
+  .add-task {
+    margin: 2em;
+  }
+  
+  .add-task form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .add-task label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .add-task input {
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5em;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+  
+  .add-task button {
+    background-color: #775ce1;
+    border: none;
+    border-radius: 2.5em;
+    color: #000000;
+    font-weight: bold;
+    padding: 0.5em;
+    text-transform: uppercase;
+  }
+  
+  .add-task button:hover {
+    content: "Use esse botão para adicionar uma nova tarefa";
+    background-color: #775ce1;
+    cursor: pointer;
+  }
+  
+  .task-list {
+    margin: 2em;
+  }
+  
+  .task-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .task-list li {
+    background-color: #775CE1;
+    border-radius: 0.5em;
+    color: #FDFDFD;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+  }
+  
+  .add-task-button {
+    background-color: #775ce1;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transform: scale(1.5);
+    transition: transform 0.2s;
+  }
+  
+  .add-task-button:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  

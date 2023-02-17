@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddTaskForm from "./components/AddTaskForm";
+import TaskList from "./components/TaskList";
+import { FaPlus } from "react-icons/fa";
+import "./App.css";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [formVisible, setFormVisible] = useState(false);
+
+  function handleAddTask(task) {
+    setTasks((prevTasks) => [...prevTasks, task]);
+    setFormVisible(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Be Your Better Version</h1>
       </header>
+      <div className="add-task">
+        {formVisible ? (
+          <AddTaskForm onAddTask={handleAddTask} />
+        ) : (
+          <button
+            className="add-task-button"
+            onClick={() => setFormVisible(true)}
+          >
+            <FaPlus />
+          </button>
+        )}
+      </div>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
