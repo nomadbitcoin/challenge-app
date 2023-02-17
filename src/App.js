@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
+import ConnectWalletButton from './components/ConnectWalletButton';
 import { FaPlus } from "react-icons/fa";
 import "./App.css";
 
@@ -18,6 +19,9 @@ function App() {
       <header>
         <h1>Be Your Better Version</h1>
       </header>
+      <div>
+        <ConnectWalletButton />
+      </div>
       <div className="add-task">
         {formVisible ? (
           <AddTaskForm onAddTask={handleAddTask} />
