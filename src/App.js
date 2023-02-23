@@ -1,41 +1,15 @@
-import { useState } from "react";
-import AddTaskForm from "./components/AddTaskForm";
-import TaskList from "./components/TaskList";
-import ConnectWalletButton from './components/ConnectWalletButton';
-import { FaPlus } from "react-icons/fa";
-import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Layouts from "./routes";
+import ConnectWalletButton from "./components/ConnectWalletButton/ConnectWalletButton";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [formVisible, setFormVisible] = useState(false);
-
-  function handleAddTask(task) {
-    setTasks((prevTasks) => [...prevTasks, task]);
-    setFormVisible(false);
-  }
+  const [account, setAccount] = useState(localStorage.getItem("account") || null);
 
   return (
-    <div className="App">
-      <header>
-        <h1>Be Your Better Version</h1>
-      </header>
-      <div>
-        <ConnectWalletButton />
-      </div>
-      <div className="add-task">
-        {formVisible ? (
-          <AddTaskForm onAddTask={handleAddTask} />
-        ) : (
-          <button
-            className="add-task-button"
-            onClick={() => setFormVisible(true)}
-          >
-            <FaPlus />
-          </button>
-        )}
-      </div>
-      <TaskList tasks={tasks} />
-    </div>
+    <Router>
+      {account ? <Layouts/> : <ConnectWalletButton account={account} setAccount={setAccount} />}
+    </Router>
   );
 }
 
