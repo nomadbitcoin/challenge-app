@@ -2,7 +2,7 @@ import React from "react";
 import Web3 from "web3";
 
 function ConnectWalletButton(props) {
-
+  
   async function connectWallet() {
     if (window.ethereum) {
       try {

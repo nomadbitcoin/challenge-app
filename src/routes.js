@@ -13,7 +13,7 @@ function Home() {
 const Layouts = () => {
   return (
     <Routes>
-      <Route path="/home" element={<SignInForm/>} />
+      <Route exact path="/" element={<SignInForm/>} />
       {/* <Route path="/home" component={AddTaskForm} /> */}
       {/* <Route path="/perfil" component={TaskList} /> */}
     </Routes>
