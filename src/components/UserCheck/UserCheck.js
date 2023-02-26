@@ -30,7 +30,7 @@ function UserCheck(props) {
             const contract = new web3.eth.Contract(contractABI, contractAddress);
   
             // Verificar se o usuário está registrado
-            const user = await contract.methods.getUser(props.userAddress).call();
+            await contract.methods.getUser(props.userAddress).call();
             setIsRegistered(true);
           } else {
             console.error('Provedor Ethereum não encontrado!');
@@ -47,7 +47,7 @@ function UserCheck(props) {
       }
   
       checkUserRegistration();
-    }, [props.userAddress, contractABI]);
+    }, [props.userAddress]);
   
     if (isLoading) {
         return (

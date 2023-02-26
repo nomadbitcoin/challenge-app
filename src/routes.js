@@ -7,6 +7,8 @@ import ConnectWalletButton from './components/ConnectWalletButton/ConnectWalletB
 import SignInForm from './components/SignInForm/SignInForm';
 import UserCheck from './components/UserCheck/UserCheck';
 
+//TODO: Nenhuma rota deve ser acessada se não estiver conectado e registrado.
+
 function Home() {
   return <h1>Welcome to the homepage!</h1>;
 }
