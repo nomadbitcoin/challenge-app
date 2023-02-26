@@ -4,8 +4,8 @@ import UserRegistry from '../../contracts/UserRegistry.json';
 import { css } from "@emotion/react";
 import { BeatLoader } from "react-spinners";
 
-const contractAddress = '0xd1be7ff959fE7Bc8E45F4432546C9D387C3836f4';
 const contractABI = UserRegistry.abi;
+const contractAddress = '0xd1be7ff959fE7Bc8E45F4432546C9D387C3836f4';
 
 const override = css`
   display: block;

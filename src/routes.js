@@ -27,7 +27,7 @@ const Layouts = (props) => {
           />
         }
       />
-      {/* <Route path="/home" component={AddTaskForm} /> */}
+      <Route path="/home" element={<Home />} />
       {/* <Route path="/perfil" component={TaskList} /> */}
     </Routes>
   );
