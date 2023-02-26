@@ -8,7 +8,7 @@ function App() {
 
   return (
     <Router>
-      {account ? <Layouts/> : <ConnectWalletButton account={account} setAccount={setAccount} />}
+      {account ? <Layouts account={account}/> : <ConnectWalletButton account={account} setAccount={setAccount} />}
     </Router>
   );
 }
