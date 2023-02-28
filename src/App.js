@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Layouts from "./routes";
 import ConnectWalletButton from "./components/ConnectWalletButton/ConnectWalletButton";
-import Cookies from "js-cookie";
 
 function App() {
   const [account, setAccount] = useState(null);
 
   const handleDisconnect = () => {
-    // Cookies.remove("account");
     setAccount(null);
   };
 
@@ -16,7 +14,6 @@ function App() {
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     if (accounts.length > 0 && accounts[0] !== account) {
       setAccount(accounts[0]);
-      // Cookies.set("account", accounts[0], { expires: 7 });
     }
   };
 
