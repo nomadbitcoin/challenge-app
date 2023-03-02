@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Layouts from "./routes";
-import ConnectWalletButton from "./components/ConnectWalletButton/ConnectWalletButton";
+import {ConnectWalletButton, vefifyChain} from "./components/ConnectWalletButton/ConnectWalletButton";
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -13,6 +13,7 @@ function App() {
   const updateAccount = async () => {
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     if (accounts.length > 0 && accounts[0] !== account) {
+      await vefifyChain()
       setAccount(accounts[0]);
     }
   };

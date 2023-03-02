@@ -1,21 +1,14 @@
 // routes.js
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import AddTaskForm from "./components/AddTaskForm/AddTaskForm";
-import TaskList from "./components/TaskList/TaskList";
-import ConnectWalletButton from './components/ConnectWalletButton/ConnectWalletButton';
-import SignInForm from './components/SignInForm/SignInForm';
 import UserCheck from './components/UserCheck/UserCheck';
-
-//TODO: Nenhuma rota deve ser acessada se não estiver conectado e registrado.
 
 function Home() {
   return <h1>Welcome to the homepage!</h1>;
 }
 
 const Layouts = (props) => {
-  const userAddress = props.account;
-
   return (
     <Routes>
       <Route
@@ -23,14 +16,29 @@ const Layouts = (props) => {
         path="/"
         element={
           <UserCheck
-            userAddress={userAddress}
-            notRegisteredElement={<SignInForm />}
-            registeredElement={<Home />}
+            userAddress={props.account}
+            privateRoute={<Home />}
           />
         }
       />
-      <Route path="/home" element={<Home />} />
-      {/* <Route path="/perfil" component={TaskList} /> */}
+      <Route
+        path="/home"
+        element={
+          <UserCheck
+            userAddress={props.account}
+            privateRoute={<Home />}
+          />
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <UserCheck
+            userAddress={props.account}
+            privateRoute={<AddTaskForm />}
+          />
+        }
+      />
     </Routes>
   );
 };
