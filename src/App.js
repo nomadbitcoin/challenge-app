@@ -5,7 +5,7 @@ import {ConnectWalletButton, vefifyChain} from "./components/ConnectWalletButton
 
 function App() {
   const [account, setAccount] = useState(null);
-
+  
   const handleDisconnect = () => {
     setAccount(null);
   };

@@ -1,5 +1,6 @@
 const jestConfig = {
     verbose: true,
+    silent: true,
     testEnvironment: 'jsdom',
     testURL: "http://localhost/",
     transform: {

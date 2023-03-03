@@ -1,11 +1,26 @@
-import { render, screen, fireEvent, waitFor} from "@testing-library/react";
+import { act, render, screen, fireEvent, waitFor} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import App from "../src/App";
 
+const mockEthereum = {
+  isMetaMask: true,
+  selectedAddress: '0x0BB56447B1e484C3486AC033a2A1DDE4f13efEF5',
+  networkVersion: '1',
+  request: jest.fn(() => Promise.resolve(["0x0BB56447B1e484C3486AC033a2A1DDE4f13efEF5"])),
+  enable: jest.fn(),
+  on: jest.fn(),
+  removeListener: jest.fn(),
+};
+
 describe("ConnectWalletButton", () => {
   it("displays the connect wallet button if the user has not connected their wallet", () => {
-    render(<App />);
+    // Simulando a presença do objeto `window.ethereum`
+    window.ethereum = mockEthereum;
+
+    act(() => {
+      render(<App />);
+    });
 
     const connectButton = screen.getByRole("button", {
       name: "Conectar carteira"
@@ -15,13 +30,11 @@ describe("ConnectWalletButton", () => {
   });
 
   it("does not display the connect wallet button if the user has connected their wallet", async () => {
-    const mockAccounts = ["0x0BB56447B1e484C3486AC033a2A1DDE4f13efEF5"];
-    window.ethereum = {
-      request: jest.fn(() => Promise.resolve(mockAccounts[0])),
-      isMetaMask: true
-    };
+    window.ethereum = mockEthereum;
 
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
 
     const connectButton = screen.getByRole("button", {
       name: "Conectar carteira"
